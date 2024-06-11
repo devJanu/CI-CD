@@ -41,6 +41,12 @@ jobs:
       - name: Build Android
         run: flutter build apk --release
 
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-release.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+
       - name: Build iOS
         if: runner.os == 'macOS'
         run: flutter build ios --release --no-codesign
